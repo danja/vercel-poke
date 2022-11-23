@@ -20,14 +20,15 @@ export class HelloComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get("https://hyperdata.it", { responseType: 'text', observe: 'response' },).subscribe({
+    this.http.get("https://hyperdata.it", { responseType: 'text' },).subscribe({
       next: data => {
-        this.stuff = JSON.stringify(data);
-
+        var things = JSON.parse(data);
+        // this.stuff = JSON.stringify(data);
+        this.stuff = things;
       },
       error: error => {
         this.stuff = error.message;
-        console.error('There was an error!', error);
+        console.error('error', error);
       },
 
     });
