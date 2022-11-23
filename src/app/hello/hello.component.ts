@@ -35,7 +35,7 @@ export class HelloComponent implements OnInit {
         console.error('error', error);
       },
 
-    });
+    }); // wake up vercel
   }
 }
 
