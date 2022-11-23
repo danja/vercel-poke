@@ -32,10 +32,6 @@ export class HelloComponent implements OnInit {
 
     });
   }
-
-  getStuff() {
-    let stuff = this.http.get<HelloComponent>("https://hyperdata.it");
-  }
 }
 
 
