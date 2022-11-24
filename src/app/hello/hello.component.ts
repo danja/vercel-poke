@@ -22,7 +22,7 @@ export class HelloComponent implements OnInit {
   ngOnInit(): void {
     var heads = {};
     var response;
-    this.http.get("http://hyperdata.it:3001", { responseType: 'text/html', observe: 'response' },).subscribe({
+    this.http.get("http://hyperdata.it:3001", { responseType: 'text', observe: 'response' },).subscribe({
       //  headers: heads 
       next: data => {
 
