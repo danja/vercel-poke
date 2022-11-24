@@ -26,8 +26,8 @@ export class HelloComponent implements OnInit {
       //  headers: heads 
       next: data => {
 
+        //        this.stuff = data
         this.stuff = JSON.stringify(data)
-
 
       },
       error: error => {
