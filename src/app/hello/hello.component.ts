@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable, throwError } from 'rxjs';
@@ -21,14 +21,19 @@ export class HelloComponent implements OnInit {
 
   ngOnInit(): void {
     var heads = {};
-    var response;
+    // headers: new HttpHeaders({ 'Accept': 'application/json' }), 
+    var response; // headers: new HttpHeaders({ 'Accept': 'application/json'}) {options: { 'Accept': 'application/json' }}
     this.http.get("https://echo.hyperdata.it", { responseType: 'text', observe: 'response' },).subscribe({
       //  headers: heads 
       next: data => {
 
         //        this.stuff = data
         this.stuff = JSON.stringify(data)
-
+        console.log("data = \n");
+        console.log(data);
+        for (var key in data.headers) {
+          console.log(key + " : " + "\n");
+        }
       },
       error: error => {
         this.stuff = error.message;
