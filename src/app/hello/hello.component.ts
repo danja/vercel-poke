@@ -28,12 +28,12 @@ export class HelloComponent implements OnInit {
         this.url = data['url']
         this.status = data['status']
         this.statusText = data['statusText']
-        this.headers =  JSON.parse(data['body']!) // non-null assertion
+        this.headers = JSON.parse(data['body']!) // non-null assertion
       },
       error: error => {
         console.error('error', error.message);
       },
-    }); // wake up vercel
+    }); // wake up  vercel
   }
 }
 
