@@ -14,32 +14,25 @@ import { catchError, retry } from 'rxjs/operators';
 
 export class HelloComponent implements OnInit {
 
-  stuff: any;
+  url: any;
+  status: any;
+  statusText: any;
+  headers: any;
 
   constructor(private http: HttpClient) {
   }
 
   ngOnInit(): void {
-    var heads = {};
-    // headers: new HttpHeaders({ 'Accept': 'application/json' }), 
-    var response; // headers: new HttpHeaders({ 'Accept': 'application/json'}) {options: { 'Accept': 'application/json' }}
     this.http.get("https://echo.hyperdata.it", { responseType: 'text', observe: 'response' },).subscribe({
-      //  headers: heads 
       next: data => {
-
-        //        this.stuff = data
-        this.stuff = JSON.stringify(data)
-        console.log("data = \n");
-        console.log(data);
-        for (var key in data.headers) {
-          console.log(key + " : " + "\n");
-        }
+        this.url = data['url']
+        this.status = data['status']
+        this.statusText = data['statusText']
+        this.headers =  JSON.parse(data['body']!) // non-null assertion
       },
       error: error => {
-        this.stuff = error.message;
-        console.error('error', error);
+        console.error('error', error.message);
       },
-
     }); // wake up vercel
   }
 }
